@@ -24,5 +24,3 @@ public String searchForLocation(){
         return "City";
     }
 }
-
-
