@@ -4,35 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>City Weather Data</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-5JVr6P3a2n5K5R5dIfOM+5WvbXrTwz3BxY35DPO3t8K8KUN1zA3k0MdyjcdYjXKJc/s7yWjaKUfopcm7G8Bhfg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-    
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
             margin: 0;
             padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333333;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-top: 20px;
         }
 
         th, td {
-            padding: 12px;
+            padding: 15px;
             text-align: left;
-            border-bottom: 1px solid #ddd;
         }
 
         th {
-            background-color: #f2f2f2;
+            background-color: #f9fafb;
+            font-weight: bold;
+            border-bottom: 2px solid #e6e6e6;
         }
 
-        tr:hover {
-            background-color: #f5f5f5;
+        td {
+            border-bottom: 1px solid #e6e6e6;
+        }
+
+        tr:hover td {
+            background-color: #f1f5f9;
+        }
+
+        .icon {
+            margin-right: 10px;
+        }
+
+        .value {
+            font-weight: bold;
         }
     </style>
 </head>
@@ -41,48 +71,48 @@
         <h1>City Weather Data</h1>
         <table>
             <tr>
-                <th>Field</th>
-                <th>Value</th>
+                <th><i class="fas fa-clock icon"></i>Field</th>
+                <th><i class="fas fa-info-circle icon"></i>Value</th>
             </tr>
             <tr>
                 <td>Timezone</td>
-                <td th:text="${city.timezone}"></td>
+                <td class="value" th:text="${city.timezone}"></td>
             </tr>
             <tr>
                 <td>Sunrise</td>
-                <td th:text="${city.sunRise}"></td>
+                <td class="value" th:text="${city.sunRise}"></td>
             </tr>
             <tr>
                 <td>Sunset</td>
-                <td th:text="${city.sunset}"></td>
+                <td class="value" th:text="${city.sunset}"></td>
             </tr>
             <tr>
                 <td>Temperature</td>
-                <td th:text="${city.temp}"></td>
+                <td class="value" th:text="${city.temp} + ' Kelvin'"></td>
             </tr>
             <tr>
                 <td>Feels Like Temperature</td>
-                <td th:text="${city.tempFellsLike}"></td>
+                <td class="value" th:text="${city.tempFellsLike} + ' Kelvin'"></td>
             </tr>
             <tr>
                 <td>Pressure</td>
-                <td th:text="${city.pressure} + ' hPa'"></td>
+                <td class="value" th:text="${city.pressure} + ' hPa'"></td>
             </tr>
             <tr>
                 <td>Humidity</td>
-                <td th:text="${city.humidity} + '%'"></td>
+                <td class="value" th:text="${city.humidity} + '%'"></td>
             </tr>
             <tr>
                 <td>UV Index</td>
-                <td th:text="${city.uvi}"></td>
+                <td class="value" th:text="${city.uvi}"></td>
             </tr>
             <tr>
                 <td>Cloud Cover</td>
-                <td th:text="${city.clouds} + '%'"></td>
+                <td class="value" th:text="${city.clouds} + '%'"></td>
             </tr>
             <tr>
                 <td>Wind Speed</td>
-                <td th:text="${city.windSpeed} + ' m/s'"></td>
+                <td class="value" th:text="${city.windSpeed} + ' m/s'"></td>
             </tr>
         </table>
     </div>
