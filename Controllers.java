@@ -13,16 +13,4 @@ public class Controllers {
     public String searchForLocation() {
         return "LandingPage";
     }
-
-    @GetMapping("/test2")
-    public String showSearchForLocation(@RequestParam("query") String query, Model model) {
-        return "redirect:/CityData?query=" + query;
-    }
-
-    @GetMapping("/CityData")
-    public String showCityData(@RequestParam("query") String query, Model model) {
-        CityWeatherData city = new CityWeatherData("Europe/Warsaw", "5:45", "22:30", 279.13, 276.44, 1029, 64, 0.06f, 2, 3);
-        model.addAttribute("city", city);
-        return "City";
-    }
 }
