@@ -95,18 +95,45 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>Weather Now</h1>
-    </header>
-    <main>
-        <div class="search-container">
-            <h2>Search for a City</h2>
-            <input type="text" class="search-bar" placeholder="Enter city name...">
-            <button class="search-button">Search</button>
-        </div>
-    </main>
-    <footer>
-        <p>&copy; 2024 Weather Now. All rights reserved.</p>
-    </footer>
+<header>
+    <h1>Weather Now</h1>
+</header>
+<main>
+    <div class="search-container">
+        <h2>Search for a City</h2>
+        <form id="search-form">
+            <input type="text" id="city-name" class="search-bar" placeholder="Enter city name..." required>
+            <button type="submit" class="search-button">Search</button>
+        </form>
+        <div id="weather-info"></div>
+    </div>
+</main>
+<footer>
+    <p>&copy; 2024 Weather Now. All rights reserved.</p>
+</footer>
+
+<script>
+        document.getElementById('search-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const city = document.getElementById('city-name').value;
+            const weatherInfoDiv = document.getElementById('weather-info');
+
+            try {
+                const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=Your own API Keys`);
+                const data = await response.json();
+                if (data.cod === 200) {
+                    weatherInfoDiv.innerHTML = `
+                        <h3>Weather in ${data.name}</h3>
+                        <p>Temperature: ${(data.main.temp - 273.15).toFixed(2)}°C</p>
+                        <p>Weather: ${data.weather[0].description}</p>
+                    `;
+                } else {
+                    weatherInfoDiv.innerHTML = `<p>City not found. Please try again.</p>`;
+                }
+            } catch (error) {
+                weatherInfoDiv.innerHTML = `<p>There was an error fetching the weather data. Please try again later.</p>`;
+            }
+        });
+    </script>
 </body>
 </html>
