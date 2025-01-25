@@ -49,6 +49,7 @@
             box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
         }
 
+
         .search-container {
             background: rgba(255, 255, 255, 0.9);
             border-radius: 15px;
@@ -93,7 +94,7 @@
             background-color: #005f8a;
         }
 
-        /* Modern table design */
+
         .weather-table {
             width: 100%;
             margin-top: 30px;
@@ -152,6 +153,9 @@
 <body>
 <header>
     <h1>Weather Now</h1>
+    <button onclick="location.href='/'" style="background-color: #0077b6; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+        🏠
+    </button>
 </header>
 <main>
     <div class="search-container">
@@ -175,7 +179,7 @@
     </div>
 </main>
 <footer>
-    <p>&copy; 2024 Weather Now. All rights reserved.</p>
+    <p>&copy; 2024 Weather Now.</p>
 </footer>
 
 <script>
@@ -183,12 +187,10 @@
             event.preventDefault();
             const city = document.getElementById("cityInput").value;
 
-            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=Your own API key&units=metric`)
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=64109ddae5be15b84afc74b68ae2f13d&units=metric`)
                 .then(response => response.json())
                 .then(data => {
-                    // Extracting the necessary data from the API response
                     const weather = {
-                        timezone: data.timezone,
                         sunrise: new Date(data.sys.sunrise * 1000).toLocaleTimeString(),
                         sunset: new Date(data.sys.sunset * 1000).toLocaleTimeString(),
                         temp: data.main.temp,
@@ -206,7 +208,6 @@
                     const table = document.getElementById("weatherTable");
                     table.innerHTML = `
                         <tr><th>Field</th><th>Value</th></tr>
-                        <tr><td>Timezone</td><td>${weather.timezone}</td></tr>
                         <tr><td>Sunrise</td><td>${weather.sunrise}</td></tr>
                         <tr><td>Sunset</td><td>${weather.sunset}</td></tr>
                         <tr><td>Temperature</td><td>${weather.temp} °C</td></tr>
