@@ -13,4 +13,9 @@ public class Controllers {
     public String searchForLocation() {
         return "LandingPage";
     }
-}
+    @GetMapping("/")
+    public String showHomePage() {
+        return "LandingPage";
+    }
+
+    }
