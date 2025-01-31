@@ -187,7 +187,7 @@
             event.preventDefault();
             const city = document.getElementById("cityInput").value;
 
-            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=64109ddae5be15b84afc74b68ae2f13d&units=metric`)
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid Your API key=metric`)
                 .then(response => response.json())
                 .then(data => {
                     const weather = {
