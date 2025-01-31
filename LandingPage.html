@@ -4,109 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Now</title>
-    <style>
-        @keyframes moveBackground {
-            0% { background-position: 0 0; }
-            100% { background-position: -1000px 0; }
-        }
-        
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to bottom, rgba(131, 164, 212, 0.7), rgba(182, 251, 255, 0.7)), url() repeat-x;
-            background-size: cover;
-            background-attachment: fixed;
-            animation: moveBackground 30s linear infinite;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        
-        header {
-            background: rgba(0, 119, 182, 0.9);
-            color: white;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        
-        main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        
-        footer {
-            background-color: rgba(0, 119, 182, 0.9);
-            color: white;
-            text-align: center;
-            padding: 10px;
-            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-        }
-        
-        .search-container {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            max-width: 500px;
-            width: 100%;
-            transition: transform 0.3s;
-        }
-        
-        .search-container:hover {
-            transform: translateY(-10px);
-        }
-        
-        .search-container h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-        
-        .search-bar {
-            width: 100%;
-            padding: 10px;
-            font-size: 18px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-        
-        .search-button {
-            background-color: #0077b6;
-            color: white;
-            padding: 10px 20px;
-            font-size: 18px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .search-button:hover {
-            background-color: #005f8a;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    
+    
 </head>
 <body>
-    <header>
-        <h1>Weather Now</h1>
-    </header>
-    <main>
-        <div class="search-container">
-            <h2>Search for a City</h2>
-            <input type="text" class="search-bar" placeholder="Enter city name...">
-            <button class="search-button">Search</button>
-        </div>
-    </main>
-    <footer>
-        <p>&copy; 2024 Weather Now. All rights reserved.</p>
-    </footer>
+<header>
+    <h1>Weather Now</h1>
+</header>
+<main>
+    <div class="search-container">
+        <h2>Search for a City</h2>
+        <form id="searchForm">
+            <input type="text" id="cityInput" class="search-bar" placeholder="Enter city name..." required>
+            <button type="submit" class="search-button">Search</button>
+        </form>
+    </div>
+
+    <!--To nie działa-->
+    <div id="weather-tables-container" style="display: flex; gap: 10px;">
+            <script type="module" src="source/MainPageWeather.js"></script>
+    </div>
+    
+
+    <!-- Weather Data Table -->
+    <div id="weatherData" style="display: none;">
+        <h2>Weather Information</h2>
+        <table class="weather-table" id="weatherTable">
+            <tr>
+                <th>Field</th>
+                <script src="source/Weather.js"></script>
+                <th>Value</th>
+            </tr>
+            <!-- Data rows will be dynamically added here -->
+        </table>
+    </div>
+</main>
+<footer>
+    <p>&copy; 2024 Weather Now. All rights reserved.</p>
+</footer>
 </body>
 </html>
