@@ -10,31 +10,32 @@
 </head>
 <body>
 <header>
-    <h1>Weather Now</h1>
+    <h1>
+        Weather Now
+        <img src="source/assets/homeButton.png" style="height: 50px; cursor: pointer; float:right" onclick="location.href='/LandingPage.html'">
+    </h1>
+    
 </header>
 <main>
     <div class="search-container">
         <h2>Search for a City</h2>
         <form id="searchForm">
             <input type="text" id="cityInput" class="search-bar" placeholder="Enter city name..." required>
-            <button type="submit" class="search-button">Search</button>
+            <button type="submit" class="search-button" id="searchButton">Search</button>
         </form>
     </div>
 
-    <!--To nie działa-->
-    <div id="weather-tables-container" style="display: flex; gap: 10px;">
-            <script type="module" src="source/MainPageWeather.js"></script>
+    <!--Show little info about weather in the world-->
+    <div id="weather-tables-container">
+            <script src="source/MainPageWeather.js"></script>  
     </div>
     
 
     <!-- Weather Data Table -->
     <div id="weatherData" style="display: none;">
-        <h2>Weather Information</h2>
         <table class="weather-table" id="weatherTable">
             <tr>
-                <th>Field</th>
                 <script src="source/Weather.js"></script>
-                <th>Value</th>
             </tr>
             <!-- Data rows will be dynamically added here -->
         </table>
