@@ -65,7 +65,20 @@ document.getElementById("searchForm").addEventListener("submit", function(event)
             `;
     })
     .catch(error => {
-        alert("Error fetching weather data: " + error);
+        document.getElementById("weather-tables-container").style.display = "none";
+        const alert = document.getElementById("alert");
+        alert.style.visibility = "visible";
+        
+        alert.innerHTML = `
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            ${error}
+            <button type="button" class="btn-close" aria-label="Close" id="close-alert"></button>
+            </div>`
+
+        document.getElementById("close-alert").addEventListener("click", function(){
+            alert.style.visibility = "hidden";
+            document.getElementById("weather-tables-container").style.display = "flex";
+        })
     });
 });
 

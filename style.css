@@ -132,16 +132,22 @@ footer {
     background-color: #fff;
 }
 
-.mainWeather{
-    display: flex;
-    gap: 10px;
-}
 
 #weather-tables-container{
     display: flex;
     gap: 20px;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.alert{
+    position: relative;
+    top: 20px;
+}
+
+.alert:hover{
+    transform: translateY(-10px);
+    transition: transform 0.3s;
 }
 
 /* Responsive design */
